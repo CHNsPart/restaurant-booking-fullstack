@@ -1,0 +1,48 @@
+<!-- views/edit.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Reservation</title>
+</head>
+<body>
+  <h2>Edit Reservation</h2>
+
+  <form action="/reservations/edit/<%= reservation._id %>" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" value="<%= reservation.name %>">
+
+    <label for="phone">Phone Number:</label>
+    <input type="tel" name="phone" id="phone" value="<%= reservation.phone %>">
+
+    <label for="person">Number of Persons:</label>
+    <select name="person" id="person">
+      <option value="1-person" <%= reservation.person === '1 Person' ? 'selected' : '' %>>1 Person</option>
+      <option value="2-person" <%= reservation.person === '2 Person' ? 'selected' : '' %>>2 Persons</option>
+      <option value="3-person" <%= reservation.person === '3 Person' ? 'selected' : '' %>>3 Persons</option>
+      <option value="4-person" <%= reservation.person === '4 Person' ? 'selected' : '' %>>4 Persons</option>
+      <option value="5-person" <%= reservation.person === '5 Person' ? 'selected' : '' %>>5 Persons</option>
+      <option value="6-person" <%= reservation.person === '6 Person' ? 'selected' : '' %>>6 Persons</option>
+      <option value="7-person" <%= reservation.person === '7 Person' ? 'selected' : '' %>>7 Persons</option>
+      <!-- Add options for other numbers of persons -->
+    </select>
+
+    <!-- <label for="reservation-date">Reservation Date:</label>
+    <input type="date" name="reservationDate" id="reservation-date" value="<%= reservation.reservationDate %>"> -->
+
+    <label for="reservation-time">Reservation Time:</label>
+    <select name="reservationTime" id="reservation-time">
+      <!-- Add options for reservation times -->
+    </select>
+
+    <label for="message">Message:</label>
+    <textarea name="message" id="message"><%= reservation.message %></textarea>
+
+    <button type="submit">Update Reservation</button>
+  </form>
+
+  <a href="/admin">Back to Admin</a>
+</body>
+</html>

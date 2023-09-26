@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscriber List</title>
+</head>
+<body>
+  <h2>Subscriber List</h2>
+
+  <ul>
+    <% subs.forEach((sub) => { %>
+      <li>
+        <strong>Email:</strong> <%= sub.email %><br>
+        <strong>Status:</strong> <%= sub.status %><br>
+
+        <!-- Edit button -->
+        <a href="/subscribe/edit/<%= sub._id %>">Edit</a>
+
+        <!-- Delete button -->
+        <form action="/subscribe/delete/<%= sub._id %>?_method=DELETE" method="POST" style="display: inline;">
+          <input type="hidden" name="_method" value="DELETE">
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+      <hr>
+    <% }); %>
+  </ul>
+
+  <a href="/">Back to Home</a>
+    |
+  <a href="/admin">Back to Admin</a>
+
+</body>
+</html>

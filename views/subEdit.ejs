@@ -1,0 +1,28 @@
+<!-- views/subEdit.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Subscriber</title>
+</head>
+<body>
+  <h2>Edit Subscriber</h2>
+
+  <form action="/subscribe/edit/<%= subs._id %>" method="POST">
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" value="<%= subs.email %>" required>
+
+    <label for="status">Status:</label>
+    <select name="status" id="status" required>
+      <option value="subscribed" <%= subs.status === 'subscribed' ? 'selected' : '' %>>Subscribed</option>
+      <option value="unsubscribed" <%= subs.status === 'unsubscribed' ? 'selected' : '' %>>Unsubscribed</option>
+    </select>
+
+    <button type="submit">Update Subscriber</button>
+  </form>
+
+  <a href="/subscribe">Back to Subscriber List</a>
+</body>
+</html>

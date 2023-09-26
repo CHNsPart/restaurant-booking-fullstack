@@ -1,0 +1,40 @@
+<!-- views/admin.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+</head>
+<body>
+  <h2>Reservation List (Admin)</h2>
+
+  <ul>
+    <% reservations.forEach((reservation) => { %>
+      <li>
+        <strong>Name:</strong> <%= reservation.name %><br>
+        <strong>Phone:</strong> <%= reservation.phone %><br>
+        <strong>Persons:</strong> <%= reservation.person %><br>
+        <strong>Date:</strong> <%= reservation.reservationDate %><br>
+        <strong>Time:</strong> <%= reservation.reservationTime %><br>
+        <strong>Message:</strong> <%= reservation.message %><br>
+
+        <!-- Edit button -->
+        <a href="/reservations/edit/<%= reservation._id %>">Edit</a>
+
+        <!-- Delete button -->
+        <form action="/reservations/delete/<%= reservation._id %>?_method=DELETE" method="POST" style="display: inline;">
+          <input type="hidden" name="_method" value="DELETE"> <!-- Add this hidden field -->
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+      <hr>
+    <% }); %>
+  </ul>
+
+  <a href="/">Back to Home</a>
+  |
+  <a href="/subscribe">List of subsciption</a>
+</body>
+</html>
