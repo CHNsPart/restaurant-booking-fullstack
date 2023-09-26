@@ -28,10 +28,13 @@ This is a Node.js web application for managing restaurant reservations and subsc
    ```
    npm install
    ```
-
-   ## Usage
+## Usage
 
 * To create a reservation, visit the home page and fill out the reservation form.
 * To edit or delete a reservation, visit the admin page and use the provided buttons.
 * To subscribe to the mailing list, visit the subscribe page and fill out the subscription form.
 * To edit or delete a subscriber, visit the subscriber list and use the provided buttons.
+
+## Author
+
+💡  [Touhidul Islam Chayan | CHNsPart](https://github.com/chnspart)
