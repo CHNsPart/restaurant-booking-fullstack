@@ -5,12 +5,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/assets/css/admin.css">
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
   <title>Edit Subscriber</title>
 </head>
 <body>
-  <h2>Edit Subscriber</h2>
 
-  <form action="/subscribe/edit/<%= subs._id %>" method="POST">
+  <div class="header-container">
+    <h2>Edit Subscriber</h2>
+    <a href="/subscribe" class="back-link">
+      <button class="back-button">Cancel</button>
+    </a>
+  </div>
+
+  <form action="/subscribe/edit/<%= subs._id %>" method="POST" class="reservation-form">
     <label for="email">Email:</label>
     <input type="email" name="email" id="email" value="<%= subs.email %>" required>
 
@@ -20,9 +28,8 @@
       <option value="unsubscribed" <%= subs.status === 'unsubscribed' ? 'selected' : '' %>>Unsubscribed</option>
     </select>
 
-    <button type="submit">Update Subscriber</button>
+    <button class="update-button" type="submit">Update Subscriber</button>
   </form>
 
-  <a href="/subscribe">Back to Subscriber List</a>
 </body>
 </html>

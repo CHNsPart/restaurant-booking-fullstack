@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const Reservation = require('../models/Reservation');
+const Subscribe = require('../models/Subscribe');
 
 // Add a new reservation (Create)
 router.post('/reservations', async (req, res) => {
@@ -66,10 +67,13 @@ router.get('/', async (req, res) => {
 router.get('/admin', async (req, res) => {
   try {
     const reservations = await Reservation.find();
+    const subs = await Subscribe.find();
+    const reservationLength = reservations.length;
+    const subsLength = subs.length
     if (reservations.length === 0) {
       res.send('No reservations found.'); // Handle the case of no reservations
     } else {
-      res.render('admin', { reservations });
+      res.render('admin', { reservations, subsLength, reservationLength });
     }
   } catch (error) {
     console.error(error);

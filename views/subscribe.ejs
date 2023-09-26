@@ -3,33 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/assets/css/admin.css">
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
   <title>Subscriber List</title>
 </head>
 <body>
-  <h2>Subscriber List</h2>
 
-  <ul>
+  <div class="whole-nav">
+    <div class="main-header header-container">
+      <h2>Subscriber List</h2>
+      <div class="menu">
+          <a id="big1" class="back-link" href="/">
+            <button class="preview back-button"><ion-icon name="play-circle"></ion-icon>Preview Site</button>
+          </a>
+          <a id="big2" class="back-link" href="/admin">
+            <button class="subs back-button"><ion-icon name="cube"></ion-icon>Admin Panel</button>
+          </a>
+          <a id="small1" class="back-link" href="/">
+            <button class="preview preview-icon back-button">
+                <ion-icon name="play-circle"></ion-icon>
+            </button>
+          </a>
+          <a id="small2" class="back-link" href="/admin">
+            <button class="subs preview-icon back-button">
+              <ion-icon name="cube"></ion-icon>
+            </button>
+          </a>
+        </div>
+    </div>
+
+    <div class="dash-element">
+      <a href="/subscribe">
+        <div onclick="toggleActiveClass(this)" class="small-card active">
+          <div class="card-label">Total Applicant</div>
+          <div class="card-number"><%= len %></div>
+        </div>
+      </a>
+      <a href="/subscribe/subscribed">
+        <div onclick="toggleActiveClass(this)" class="small-card">
+          <div class="card-label">Subscribers</div>
+          <div class="card-number"><%= slen %></div>
+        </div>
+      </a>
+      <a href="/subscribe/unsubscribed">
+        <div onclick="toggleActiveClass(this)" class="small-card">
+          <div class="card-label">Non-Subscribers</div>
+          <div class="card-number"><%= unslen %></div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="reservation-list">
     <% subs.forEach((sub) => { %>
-      <li>
-        <strong>Email:</strong> <%= sub.email %><br>
-        <strong>Status:</strong> <%= sub.status %><br>
+      <li class="reservation-card">
+        <div class="reservation-info">
+          <strong>Email</strong> <%= sub.email %>
+          <strong>Status</strong> <%= sub.status %>
+        </div>
+        <div class="action-buttons">
 
-        <!-- Edit button -->
-        <a href="/subscribe/edit/<%= sub._id %>">Edit</a>
+          <a href="/subscribe/edit/<%= sub._id %>">
+            <button class="edit-button">Edit</button>
+          </a>
 
-        <!-- Delete button -->
-        <form action="/subscribe/delete/<%= sub._id %>?_method=DELETE" method="POST" style="display: inline;">
-          <input type="hidden" name="_method" value="DELETE">
-          <button type="submit">Delete</button>
-        </form>
+          <form action="/subscribe/delete/<%= sub._id %>?_method=DELETE" method="POST" style="display: inline;">
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="delete-button delete" type="submit">Delete</button>
+          </form>
+        </div>
       </li>
-      <hr>
     <% }); %>
-  </ul>
+  </div>
 
-  <a href="/">Back to Home</a>
-    |
-  <a href="/admin">Back to Admin</a>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="nomodule" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<script>
+  function toggleActiveClass(card) {
+    card.classList.toggle('active');
+  }
+</script>
 
 </body>
 </html>

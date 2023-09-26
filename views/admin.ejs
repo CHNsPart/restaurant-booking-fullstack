@@ -5,36 +5,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/assets/css/admin.css">
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
   <title>Admin Panel</title>
 </head>
 <body>
-  <h2>Reservation List (Admin)</h2>
+  <div class="main-header header-container">
+    <h2>Reservation List (Admin)</h2>
+    <div class="menu">
+      <a id="big1" class="back-link" href="/">
+        <button class="preview back-button"><ion-icon name="play-circle"></ion-icon>Preview Site</button>
+      </a>
+      <a id="big2" class="back-link" href="/subscribe">
+        <button class="subs back-button"><ion-icon name="notifications"></ion-icon>Subscription Approval<small><%= subsLength %></small></button>
+      </a>
+      <a id="small1" class="back-link" href="/">
+        <button class="preview preview-icon back-button">
+            <ion-icon name="play-circle"></ion-icon>
+        </button>
+      </a>
+      <a id="small2" class="back-link" href="/subscribe">
+        <button class="subs preview-icon back-button">
+          <ion-icon name="notifications"></ion-icon>
+          <small><%= subsLength %></small>
+        </button>
+      </a>
+    </div>
+  </div>
 
-  <ul>
+  <div class="reservation-list">
     <% reservations.forEach((reservation) => { %>
-      <li>
-        <strong>Name:</strong> <%= reservation.name %><br>
-        <strong>Phone:</strong> <%= reservation.phone %><br>
-        <strong>Persons:</strong> <%= reservation.person %><br>
-        <strong>Date:</strong> <%= reservation.reservationDate %><br>
-        <strong>Time:</strong> <%= reservation.reservationTime %><br>
-        <strong>Message:</strong> <%= reservation.message %><br>
-
+    <li class="reservation-card">
+      <div class="reservation-info">
+        <strong>Name</strong> <%= reservation.name %>
+        <strong>Phone</strong> <%= reservation.phone %>
+        <strong>Persons</strong> <%= reservation.person %>
+        <strong>Date</strong> <%= reservation.reservationDate %>
+        <strong>Time</strong> <%= reservation.reservationTime %>
+        <strong>Message</strong> <%= reservation.message %>
+      </div>
+      <div class="action-buttons">
         <!-- Edit button -->
-        <a href="/reservations/edit/<%= reservation._id %>">Edit</a>
-
+        <a href="/reservations/edit/<%= reservation._id %>">
+          <button class="edit-button">Edit</button>
+        </a>
         <!-- Delete button -->
         <form action="/reservations/delete/<%= reservation._id %>?_method=DELETE" method="POST" style="display: inline;">
-          <input type="hidden" name="_method" value="DELETE"> <!-- Add this hidden field -->
-          <button type="submit">Delete</button>
+          <input type="hidden" name="_method" value="DELETE">
+          <button class="delete-button delete" type="submit">Delete</button>
         </form>
-      </li>
-      <hr>
+      </div>
+    </li>
     <% }); %>
-  </ul>
+  </div>
 
-  <a href="/">Back to Home</a>
-  |
-  <a href="/subscribe">List of subsciption</a>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="nomodule" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
 </html>

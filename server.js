@@ -16,7 +16,7 @@ mongoose.connection.on('error', (err) => {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 
 // Routes
 const reservationRoutes = require('./routes/reservationRoutes');

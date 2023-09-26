@@ -1,0 +1,350 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Global background and text color */
+body {
+    background-color: #1d1d1d;
+    color: white;
+    padding: 10px;
+    font-family: "PT Sans", sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+/* Small card styles */
+.small-card {
+  background-color: #333;
+  color: white;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+  margin: 20px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.whole-nav {
+    position: sticky;
+}
+
+.dash-element {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 5px;
+}
+.dash-element>*{
+    flex: auto;
+}
+
+.active {
+    background-color: #007bff;
+}
+
+.card-label {
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: capitalize;
+}
+
+.card-number {
+  font-weight: bold;
+  font-size: 28px;
+  margin-top: 10px;
+}
+
+/* Add styles for the header container */
+.header-container {
+    display: flex;
+    align-items: center; /* Center vertically */
+    margin-bottom: 20px; 
+    justify-content: space-evenly;
+}
+
+.main-header {
+    justify-content: space-between;
+}
+
+/* Add styles for the back button */
+.back-button {
+    background-color: rgb(228, 47, 47);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-decoration: none; /* Remove underline style */
+    display: inline-block;
+    margin: 0 10px; /* Add margin between the button and h2 */
+}
+
+.menu {
+    display: flex;
+}
+
+.preview {
+    background-color: rgb(80, 228, 47);
+    color: #333;
+}
+
+.preview-icon {
+    border-radius: 100px;
+    font-size: 32px;
+    padding: 5px;
+}
+
+
+.subs {
+    background-color: #0056b3;
+    color: white;
+}
+
+.subs-icon {
+    border-radius: 100px;
+    font-size: 32px;
+    padding: 5px;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+
+/* Reservation form styles */
+.reservation-form {
+    background-color: #1d1d1d;
+    padding: 20px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    margin: 10px auto;
+    max-width: 400px;
+}
+
+.reservation-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.reservation-form input[type="text"],
+.reservation-form input[type="tel"],
+.reservation-form input[type="email"],
+.reservation-form select,
+.reservation-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #1d1d1d;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.reservation-form select {
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.reservation-form .update-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.reservation-form .update-button:hover {
+    background-color: #0056b3;
+}
+
+.back-link {
+    color: #007bff;
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+h2 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.admin-btn {
+    background-color : #007bff
+}
+
+small {
+    font-size: 16px;
+    padding: 5px;
+    margin: 0 5px;
+    background-color: rgb(228, 47, 47);
+    color: white;
+    border-radius: 40%;
+}
+
+/* Card style */
+.reservation-card {
+  border: 1px solid #333;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.reservation-info {
+  flex: 1;
+  padding: 20px;
+  background-color: #1b1a1a; /* Set background color to match the global background */
+  color: #fff; /* Set text color to white */
+  border-radius: 5px;
+  margin-right: 10px; /* Add margin between reservation details */
+  display: flex;
+  flex-direction: column;
+}
+
+.reservation-info strong {
+  font-weight: bold;
+  color: #007bff;
+  text-transform: uppercase;
+}
+
+/* Add spacing between details */
+.reservation-info > * + * {
+  margin-top: 5px;
+}
+
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.edit-button,
+.delete-button {
+  padding: 5px 10px;
+  margin-top: 5px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+  background-color: #0056b3;
+}
+
+/* Styles for large screens (rows) */
+.reservation-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.reservation-card {
+  width: 48%; /* Adjust the width as needed for spacing */
+  margin-bottom: 15px;
+}
+
+/* Media query for small screens (columns) */
+@media (max-width: 767px) {
+  .reservation-list {
+    flex-direction: column;
+  }
+
+  .reservation-card {
+    width: 100%; /* Full width for columns on small screens */
+  }
+
+  #big1,
+  #big2 {
+    display: none;
+  }
+
+  #small1,
+  #small2 {
+    display: block;
+  }
+  button.subs.back-button {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+  button.preview.back-button {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  #big1,
+  #big2 {
+    display: block;
+  }
+
+  button.subs.back-button {
+    display: flex;
+    align-items: center;
+  }
+  button.subs.back-button ion-icon {
+    margin-right: 8px; /* Adjust the margin as needed */
+  }
+  button.preview.back-button {
+    display: flex;
+    align-items: center;
+  }
+  button.preview.back-button ion-icon {
+    margin-right: 8px; /* Adjust the margin as needed */
+  }
+
+  #small1,
+  #small2 {
+    display: none;
+  }
+}
+
+
+/* Button styles */
+button {
+  background-color: white;
+  color: black;
+  border-radius: 10em;
+  font-size: 17px;
+  font-weight: 600;
+  margin: 5px 0;
+  padding: 1em 2em;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid rgb(87, 116, 230);
+  box-shadow: 0 0 0 0 rgb(87, 116, 230);
+}
+
+.delete{
+  background-color: rgb(228, 47, 47);
+  color: white;
+  border: none;
+}
+
+button:hover {
+  transform: translateY(-4px) translateX(-2px);
+  box-shadow: 2px 5px 0 0 rgb(87, 116, 230);
+};
+
+button:active {
+  transform: translateY(2px) translateX(1px);
+  box-shadow: 0 0 0 0 rgb(87, 116, 230);
+};

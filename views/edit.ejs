@@ -5,18 +5,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/assets/css/admin.css">
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
   <title>Edit Reservation</title>
 </head>
 <body>
-  <h2>Edit Reservation</h2>
+  
+  <div class="header-container">
+    <h2>Edit Reservation</h2>
+    <a href="/admin" class="back-link">
+      <button class="back-button">Cancel</button>
+    </a>
+  </div>
 
-  <form action="/reservations/edit/<%= reservation._id %>" method="POST">
-    <label for="name">Name:</label>
+  <form action="/reservations/edit/<%= reservation._id %>" method="POST" class="reservation-form">
+    <label for="name">Name</label>
     <input type="text" name="name" id="name" value="<%= reservation.name %>">
 
     <label for="phone">Phone Number:</label>
     <input type="tel" name="phone" id="phone" value="<%= reservation.phone %>">
-
+    
     <label for="person">Number of Persons:</label>
     <select name="person" id="person">
       <option value="1-person" <%= reservation.person === '1 Person' ? 'selected' : '' %>>1 Person</option>
@@ -29,9 +37,6 @@
       <!-- Add options for other numbers of persons -->
     </select>
 
-    <!-- <label for="reservation-date">Reservation Date:</label>
-    <input type="date" name="reservationDate" id="reservation-date" value="<%= reservation.reservationDate %>"> -->
-
     <label for="reservation-time">Reservation Time:</label>
     <select name="reservationTime" id="reservation-time">
       <!-- Add options for reservation times -->
@@ -40,9 +45,8 @@
     <label for="message">Message:</label>
     <textarea name="message" id="message"><%= reservation.message %></textarea>
 
-    <button type="submit">Update Reservation</button>
+    <button type="submit" class="update-button">Update Reservation</button>
   </form>
 
-  <a href="/admin">Back to Admin</a>
 </body>
 </html>

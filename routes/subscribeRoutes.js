@@ -51,14 +51,61 @@ router.delete('/delete/:id', async (req, res) => {
   }
 });
 
+// Show subscribed subscribers
+router.get('/subscribed', async (req, res) => {
+  try {
+    const subs = await Subscribe.find({ status: 'subscribed' });
+    const totalsub = await Subscribe.find()
+    const subscribed = await Subscribe.find({ status: 'subscribed' });
+    const unsubscribed = await Subscribe.find({ status: 'unsubscribed' });
+    const len = totalsub.length;
+    const slen = subscribed.length;
+    const unslen = unsubscribed.length;
+    if (subs.length === 0) {
+      res.send('No subscribed subscribers found.');
+    } else {
+      res.render('subscribe', { subs, len, slen, unslen });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('An error occurred.');
+  }
+});
+
+// Show unsubscribed subscribers
+router.get('/unsubscribed', async (req, res) => {
+  try {
+    const subs = await Subscribe.find({ status: 'unsubscribed' });
+    const totalsub = await Subscribe.find()
+    const subscribed = await Subscribe.find({ status: 'subscribed' });
+    const unsubscribed = await Subscribe.find({ status: 'unsubscribed' });
+    const len = totalsub.length;
+    const slen = subscribed.length;
+    const unslen = unsubscribed.length;
+    if (subs.length === 0) {
+      res.send('No unsubscribed subscribers found.');
+    } else {
+      res.render('subscribe', { subs, len, slen, unslen });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('An error occurred.');
+  }
+});
+
 // Show all subs (Read)
 router.get('/', async (req, res) => {
     try {
         const subs = await Subscribe.find();
+        const subscribed = await Subscribe.find({ status: 'subscribed' });
+        const unsubscribed = await Subscribe.find({ status: 'unsubscribed' });
+        const len = subs.length;
+        const slen = subscribed.length;
+        const unslen = unsubscribed.length;
         if (subs.length === 0) {
             res.send('No subs found.'); // Handle the case of no subs
         } else {
-            res.render('subscribe', { subs });
+            res.render('subscribe', { subs, len, slen, unslen });
         }
     } catch (error) {
         console.error(error);
